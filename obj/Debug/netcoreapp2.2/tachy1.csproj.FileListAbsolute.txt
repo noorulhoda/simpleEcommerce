@@ -1,0 +1,17 @@
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\appsettings.Development.json
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\appsettings.json
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\tachy1.deps.json
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\tachy1.runtimeconfig.json
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\tachy1.runtimeconfig.dev.json
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\tachy1.dll
+M:\tachy\tachy1\bin\Debug\netcoreapp2.2\tachy1.pdb
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.csprojAssemblyReference.cache
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.AssemblyInfoInputs.cache
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.AssemblyInfo.cs
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.csproj.CoreCompileInputs.cache
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.RazorAssemblyInfo.cache
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.RazorAssemblyInfo.cs
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.RazorTargetAssemblyInfo.cache
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.dll
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.pdb
+M:\tachy\tachy1\obj\Debug\netcoreapp2.2\tachy1.genruntimeconfig.cache
