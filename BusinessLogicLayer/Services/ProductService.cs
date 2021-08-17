@@ -7,6 +7,7 @@ using MongoDB.Bson;
 using tachy1.BusinessLogicLayer.Services.Interfaces;
 using tachy1.Models;
 using tachy1.BusinessLogicLayer.Services;
+using tachy1.BusinessLogicLayer.Repositories;
 
 namespace tachy1.BusinessLogicLayer.Services
 {

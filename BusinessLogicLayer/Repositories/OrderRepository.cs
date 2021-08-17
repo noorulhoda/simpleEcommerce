@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using tachy1.Models;
 
-namespace tachy1.BusinessLogicLayer.Services
+namespace tachy1.BusinessLogicLayer.Repositories
 {
     public class OrderRepository
     {

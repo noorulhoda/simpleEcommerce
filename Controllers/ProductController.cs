@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tachy1.BusinessLogicLayer.Services;
 using tachy1.BusinessLogicLayer.Services.Interfaces;
@@ -8,6 +9,7 @@ using tachy1.Models;
 
 namespace tachy1.Controllers
 {
+   
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -17,6 +19,7 @@ namespace tachy1.Controllers
         }
         [HttpGet]
         [Route("api/product")]
+        
         public Task<IEnumerable<Product>> Get()
         {
             return _productService.GetAllProducts();
@@ -66,6 +69,7 @@ namespace tachy1.Controllers
 
         [HttpPost]
         [Route("api/product")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Post([FromBody]  Product model)
         {
             try
@@ -89,6 +93,7 @@ namespace tachy1.Controllers
 
         [HttpPut]
         [Route("api/product/updatePrice/{id}")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Update(string id,[FromBody] Product model)
         {
             if (string.IsNullOrWhiteSpace(model.Name))
@@ -103,8 +108,12 @@ namespace tachy1.Controllers
 
         }
 
+
+
+
         [HttpDelete]
         [Route("api/product/{id}")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             try

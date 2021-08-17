@@ -20,7 +20,8 @@ namespace tachy1.Models
 
         public Boolean IsAccepted { get; set; }
 
-        
+        public Product Product { get; set; }
+
     }
 
 
