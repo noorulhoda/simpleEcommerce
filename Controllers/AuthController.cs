@@ -92,7 +92,15 @@ namespace rest.Controllers
         }
 
 
+        [HttpGet]
+        [Route("api/myorders/{id}")]
+        public Task<ICollection<Order>> GetMyOrders(string id)
+        {
+            return _AuthService.GetMyOrders(id);
+        }
+
     }
+        
 
 
 

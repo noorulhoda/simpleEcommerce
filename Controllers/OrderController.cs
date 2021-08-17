@@ -3,7 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
     using tachy1.BusinessLogicLayer.Services;
     using tachy1.BusinessLogicLayer.Services.Interfaces;
     using tachy1.Models;
@@ -85,11 +86,12 @@
 
             [HttpPut]
             [Route("api/order/updatePrice/{id}")]
-            public async Task<IActionResult> Update(string id, [FromBody] Order model)
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> AcceptOrder(string id, [FromBody] Order model)
             {
                 
                 model.UpdatedOn = DateTime.UtcNow;
-                var result = await _orderService.Update(id, model);
+                var result = await _orderService.AcceptOrder(id, model);
                 if (result)
                 {
                     return Ok("Your order's price has been updated successfully");
@@ -98,7 +100,24 @@
 
             }
 
-            [HttpDelete]
+        [HttpPut]
+        [Route("api/order/updatePrice/{id}")]
+        [Authorize(Policy = "User")]
+        public async Task<IActionResult> ConfirmOrder(string orderId,string userId, [FromBody] Order model)
+        {
+
+            model.UpdatedOn = DateTime.UtcNow;
+            
+             var result = await _orderService.ConfirmOrder(orderId,userId, model);
+            if (result)
+            {
+                return Ok("Your order's price has been updated successfully");
+            }
+            return BadRequest("No order found to update");
+
+        }
+
+        [HttpDelete]
             [Route("api/order/{id}")]
             public async Task<IActionResult> Delete(string id)
             {

@@ -29,7 +29,7 @@ namespace tachy1.BusinessLogicLayer.Services
         {
             var builder = Builders<User>.Filter;
 
-            return await _context.Users.Find(_ => true).ToListAsync(); ;
+            return await _context.Users.Find(_ => true).ToListAsync(); 
         }
 
         public async Task<User> GetUser(string userName, string password)
@@ -49,5 +49,13 @@ namespace tachy1.BusinessLogicLayer.Services
             await _context.Users.InsertOneAsync(model);
         }
 
+        public Task<ICollection<Order>> GetMyOrders(string id)
+        {
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<User>.Filter.Eq("_id", ObjectedId);
+            return ((Task<ICollection<Order>>)_context.Users.Find(filter).FirstOrDefaultAsync().Result.Orders);
+        }
+
+       
     }
 }

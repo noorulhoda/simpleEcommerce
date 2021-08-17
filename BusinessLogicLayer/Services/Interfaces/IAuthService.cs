@@ -14,5 +14,6 @@ namespace tachy1.BusinessLogicLayer.Services.Interfaces
 
         Task<User> GetUser(string userName, string password);
         Task AddUser(User model);
+        Task<ICollection<Order>> GetMyOrders(string id);
     }
 }

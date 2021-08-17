@@ -14,7 +14,7 @@ namespace tachy1.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public Role Role { get; set; }
-        public ICollection<Product> WishedProducts { get; set; }
+        public ICollection<Product> CartProducts { get; set; }
         public ICollection<Order> Orders { get; set; }
        // public List<ObjectId> OrdersIds { get; set; }
     }

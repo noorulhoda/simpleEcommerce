@@ -14,8 +14,9 @@ namespace tachy1.BusinessLogicLayer.Services.Interfaces
             Task<Order> GetOrderByName(string name);
         Task<Order> GetOrderById(string id);
         Task AddOrder(Order model);
-            Task<bool> Update(string id,Order model);
-            Task<DeleteResult> RemoveOrder(string name);
+            Task<bool> AcceptOrder(string id,Order model);
+        Task<bool> ConfirmOrder(string orderId, string userId, Order model);
+        Task<DeleteResult> RemoveOrder(string name);
             Task<DeleteResult> RemoveAllOrders();
         }
     
