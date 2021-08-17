@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using tachy1.BusinessLogicLayer.Services.Interfaces;
 using tachy1.Models;
-using tachy1.DataLayer;
+using tachy1.BusinessLogicLayer.Services;
 
 namespace tachy1.BusinessLogicLayer.Services
 {
@@ -23,21 +23,30 @@ namespace tachy1.BusinessLogicLayer.Services
             return await _repository.products.Find(x => true).ToListAsync();
         }
 
-        public async Task<Product> GetProduct(string name)
+        public async Task<Product> GetProductByName(string name)
         {
             var filter = Builders<Product>.Filter.Eq("Name", name);
             return await _repository.products.Find(filter).FirstOrDefaultAsync();
         }
+        
+        public async Task<Product> GetProductById(string id)
+        {
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<Product>.Filter.Eq("_id", ObjectedId);
+            return await _repository.products.Find(filter).FirstOrDefaultAsync();
+        }
+
         public async Task AddProduct(Product model)
         {
             //inserting data
             await _repository.products.InsertOneAsync(model);
         }
 
-        public async Task<bool> UpdatePrice(Product model)
+        public async Task<bool> UpdatePrice(string id,Product model)
         {
 
-            var filter = Builders<Product>.Filter.Eq("Name", model.Name);
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<Product>.Filter.Eq("_id", ObjectedId);
             var product = _repository.products.Find(filter).FirstOrDefaultAsync();
             if (product.Result == null)
                 return false;
@@ -49,9 +58,10 @@ namespace tachy1.BusinessLogicLayer.Services
             return true;
         }
 
-        public async Task<DeleteResult> RemoveProduct(string name)
+        public async Task<DeleteResult> RemoveProduct(string id)
         {
-            var filter = Builders<Product>.Filter.Eq("Name", name);
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<Product>.Filter.Eq("_id", ObjectedId);
             return await _repository.products.DeleteOneAsync(filter);
         }
         public async Task<DeleteResult> RemoveAllProducts()

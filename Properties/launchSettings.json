@@ -11,8 +11,8 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,//values
-      "launchUrl": "api/products",
+      "launchBrowser": true,
+      "launchUrl": "api/product",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "tachy1": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/products",//values
+      "launchUrl": "api/product",//values
       "applicationUrl": "https://localhost:8080;",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

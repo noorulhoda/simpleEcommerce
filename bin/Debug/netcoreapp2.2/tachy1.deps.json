@@ -24,7 +24,11 @@
     ".NETCoreApp,Version=v2.2": {
       "tachy1/1.0.0": {
         "dependencies": {
+          "AspNetCore.Identity.Mongo": "1.0.0",
+          "AspNetCore.Identity.MongoDbCore": "1.0.5",
+          "IdentityModel": "5.1.0",
           "Microsoft.AspNetCore.App": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "MongoDB.Driver": "2.13.1"
@@ -34,6 +38,34 @@
         },
         "compile": {
           "tachy1.dll": {}
+        }
+      },
+      "AspNetCore.Identity.Mongo/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "MongoDB.Driver": "2.13.1",
+          "Mongolino": "1.2.4"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/AspNetCore.Identity.Mongo.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/AspNetCore.Identity.Mongo.dll": {}
+        }
+      },
+      "AspNetCore.Identity.MongoDbCore/1.0.5": {
+        "runtime": {
+          "lib/netcoreapp2.0/AspNetCore.Identity.MongoDbCore.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/AspNetCore.Identity.MongoDbCore.dll": {}
         }
       },
       "DnsClient/1.4.0": {
@@ -48,6 +80,32 @@
         },
         "compile": {
           "lib/netstandard2.0/DnsClient.dll": {}
+        }
+      },
+      "IdentityModel/5.1.0": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "5.0.1",
+          "System.Text.Json": "5.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/IdentityModel.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/IdentityModel.dll": {}
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll": {}
         }
       },
       "MongoDB.Bson/2.13.1": {
@@ -115,6 +173,23 @@
           "lib/netstandard2.0/MongoDB.Driver.Core.dll": {}
         }
       },
+      "MongoDB.Driver.GridFS/2.5.0": {
+        "dependencies": {
+          "MongoDB.Bson": "2.13.1",
+          "MongoDB.Driver": "2.13.1",
+          "MongoDB.Driver.Core": "2.13.1",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {}
+        }
+      },
       "MongoDB.Libmongocrypt/1.2.2": {
         "runtime": {
           "lib/netstandard2.0/MongoDB.Libmongocrypt.dll": {
@@ -141,6 +216,23 @@
         },
         "compile": {
           "lib/netstandard2.0/MongoDB.Libmongocrypt.dll": {}
+        }
+      },
+      "Mongolino/1.2.4": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Configuration.Binder": "2.2.0",
+          "MongoDB.Driver": "2.13.1",
+          "MongoDB.Driver.GridFS": "2.5.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/Mongolino.dll": {
+            "assemblyVersion": "1.2.4.0",
+            "fileVersion": "1.2.4.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/Mongolino.dll": {}
         }
       },
       "SharpCompress/0.23.0": {
@@ -190,6 +282,33 @@
         },
         "compile": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
+        }
+      },
+      "System.Text.Encodings.Web/5.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {
+            "assemblyVersion": "5.0.0.1",
+            "fileVersion": "5.0.421.11614"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
+        }
+      },
+      "System.Text.Json/5.0.1": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
+          "System.Text.Encodings.Web": "5.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Json.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.220.61120"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Json.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -722,7 +841,7 @@
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "dependencies": {
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "5.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.dll": {}
@@ -745,7 +864,7 @@
       "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "2.2.0",
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "5.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
@@ -1432,7 +1551,7 @@
       "Microsoft.AspNetCore.WebUtilities/2.2.0": {
         "dependencies": {
           "Microsoft.Net.Http.Headers": "2.2.0",
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "5.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
@@ -2031,7 +2150,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Text.Encodings.Web": "4.5.0"
+          "System.Text.Encodings.Web": "5.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
@@ -3205,12 +3324,6 @@
         },
         "compileOnly": true
       },
-      "System.Text.Encodings.Web/4.5.0": {
-        "compile": {
-          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
-        },
-        "compileOnly": true
-      },
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -3378,12 +3491,40 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AspNetCore.Identity.Mongo/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jVw/b4T/0dievmJkjdftb780rTNF8u7wylGPU9XfgvT7jQNuhjFQgsOwqG5LPNMIexsl836BPmgzknIehePN7g==",
+      "path": "aspnetcore.identity.mongo/1.0.0",
+      "hashPath": "aspnetcore.identity.mongo.1.0.0.nupkg.sha512"
+    },
+    "AspNetCore.Identity.MongoDbCore/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tQiotrJr+trtRgkjzmhbD03dDwySO8Ta3rzIdkcYRo4ofEo+8EzhRj+fkSYPYsnc6vGoKfkVdPEmkVvHvEfUCQ==",
+      "path": "aspnetcore.identity.mongodbcore/1.0.5",
+      "hashPath": "aspnetcore.identity.mongodbcore.1.0.5.nupkg.sha512"
+    },
     "DnsClient/1.4.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-CO1NG1zQdV0nEAXmr/KppLZ0S1qkaPwV0kPX5YPgmYBtrBVh1XMYHM54IXy3RBJu1k4thFtpzwo4HNHqxiuFYw==",
       "path": "dnsclient/1.4.0",
       "hashPath": "dnsclient.1.4.0.nupkg.sha512"
+    },
+    "IdentityModel/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gcv4YYXncvUvTNLF8lDJyItZzaEDFcEi3geMDtylGcl/Rx90vcV7Kv3yAofktJBW7GvmIjQgC8LtUq0s9XQT2w==",
+      "path": "identitymodel/5.1.0",
+      "hashPath": "identitymodel.5.1.0.nupkg.sha512"
+    },
+    "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W8DPQjkMScOMTtJbPwmPyj9c3zYSFGawDW3jwlBOOsnY+EzZFLgNQ/UMkK35JmkNOVPdCyPr2Tw7Vv9N+KA3ZQ==",
+      "path": "microsoft.bcl.asyncinterfaces/5.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512"
     },
     "MongoDB.Bson/2.13.1": {
       "type": "package",
@@ -3406,12 +3547,26 @@
       "path": "mongodb.driver.core/2.13.1",
       "hashPath": "mongodb.driver.core.2.13.1.nupkg.sha512"
     },
+    "MongoDB.Driver.GridFS/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9vhOWf9f+OgpBdY3sObS4nX0VEhFwSm04z96609GYa/K94+P22FyekCZD/ZxYNV7PFD6S/fCMVa0uUbFdPAWoA==",
+      "path": "mongodb.driver.gridfs/2.5.0",
+      "hashPath": "mongodb.driver.gridfs.2.5.0.nupkg.sha512"
+    },
     "MongoDB.Libmongocrypt/1.2.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-pKrlKJk4wem4MyfkaMqj+sqJ+RwUDnqnt76/Xwm5DDjMzEU5QtDkzQOLq5bVwFhNgC8LMn6Hr22tl5WsmN5+AA==",
       "path": "mongodb.libmongocrypt/1.2.2",
       "hashPath": "mongodb.libmongocrypt.1.2.2.nupkg.sha512"
+    },
+    "Mongolino/1.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cEKFHRVThzI93f7Q7fe0enA+RQnc9lfvgPO0T6kIGJLAKqKBCjAA5gSp9L6zHuA3tNfYJi7Nz2t9kGq0jUEHHw==",
+      "path": "mongolino/1.2.4",
+      "hashPath": "mongolino.1.2.4.nupkg.sha512"
     },
     "SharpCompress/0.23.0": {
       "type": "package",
@@ -3440,6 +3595,20 @@
       "sha512": "sha512-4J2JQXbftjPMppIHJ7IC+VXQ9XfEagN92vZZNoG12i+zReYlim5dMoXFC1Zzg7tsnKDM7JPo5bYfFK4Jheq44w==",
       "path": "system.text.encoding.codepages/4.5.1",
       "hashPath": "system.text.encoding.codepages.4.5.1.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KmJ+CJXizDofbq6mpqDoRRLcxgOd2z9X3XoFNULSbvbqVRZkFX3istvr+MUjL6Zw1RT+RNdoI4GYidIINtgvqQ==",
+      "path": "system.text.encodings.web/5.0.1",
+      "hashPath": "system.text.encodings.web.5.0.1.nupkg.sha512"
+    },
+    "System.Text.Json/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/UM3UK1dXKl8Ybysg/21gM4S8DJgkR+yLU8JwqCVbuNqQNImelntgYFAN5QxR8sJJ1kMx//hOUdf0lltosi8cQ==",
+      "path": "system.text.json/5.0.1",
+      "hashPath": "system.text.json.5.0.1.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
@@ -5295,13 +5464,6 @@
       "sha512": "sha512-203FnrSIrmqYoW9ufIg+e0nCws6lgo299YyyyNsmuOqp9x0DNtqF/1NYUpe6wdA/OFmsg+pHsyWuinYneHd0yw==",
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
-    },
-    "System.Text.Encodings.Web/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
-      "path": "system.text.encodings.web/4.5.0",
-      "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",

@@ -10,9 +10,9 @@ namespace tachy1.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        public string Name { get; set; }
+        public DateTime? CreatedOn { get; set; }
 
-        public DateTime? OrderedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
 
         public Boolean IsPaid { get; set; }
 
@@ -20,6 +20,7 @@ namespace tachy1.Models
 
         public Boolean IsAccepted { get; set; }
 
+        
     }
 
 

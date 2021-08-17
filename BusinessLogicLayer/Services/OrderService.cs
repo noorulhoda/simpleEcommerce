@@ -1,14 +1,14 @@
-﻿using MongoDB.Driver;
-using tachy1.Models;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using tachy1.BusinessLogicLayer.Services.Interfaces;
 using System.Threading.Tasks;
-using MongoDB.Bson;
+using MongoDB.Driver;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
+using tachy1.BusinessLogicLayer.Services.Interfaces;
+using tachy1.Models;
 using tachy1.BusinessLogicLayer.Services;
 
-namespace  tachy1.BusinessLogicLayer.Services
+namespace tachy1.BusinessLogicLayer.Services
 {
     public class OrderService : IOrderService
     {
@@ -23,35 +23,45 @@ namespace  tachy1.BusinessLogicLayer.Services
             return await _repository.orders.Find(x => true).ToListAsync();
         }
 
-        public async Task<Order> GetOrder(string name)
+        public async Task<Order> GetOrderByName(string name)
         {
             var filter = Builders<Order>.Filter.Eq("Name", name);
             return await _repository.orders.Find(filter).FirstOrDefaultAsync();
         }
+
+        public async Task<Order> GetOrderById(string id)
+        {
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<Order>.Filter.Eq("_id", ObjectedId);
+            return await _repository.orders.Find(filter).FirstOrDefaultAsync();
+        }
+
         public async Task AddOrder(Order model)
         {
             //inserting data
             await _repository.orders.InsertOneAsync(model);
         }
 
-        public async Task<bool> UpdatePrice(Order model)
+        public async Task<bool> Update(string id, Order model)
         {
 
-            var filter = Builders<Order>.Filter.Eq("Name", model.Name);
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<Order>.Filter.Eq("_id", ObjectedId);
             var order = _repository.orders.Find(filter).FirstOrDefaultAsync();
             if (order.Result == null)
                 return false;
             var update = Builders<Order>.Update
                                           .Set(x => x.IsAccepted, model.IsAccepted)
-                                          .Set(x => x.IsPaid, model.IsPaid);
+                                          .Set(x => x.UpdatedOn, model.UpdatedOn);
 
             await _repository.orders.UpdateOneAsync(filter, update);
             return true;
         }
 
-        public async Task<DeleteResult> RemoveOrder(string name)
+        public async Task<DeleteResult> RemoveOrder(string id)
         {
-            var filter = Builders<Order>.Filter.Eq("Name", name);
+            ObjectId ObjectedId = new ObjectId(id);
+            var filter = Builders<Order>.Filter.Eq("_id", ObjectedId);
             return await _repository.orders.DeleteOneAsync(filter);
         }
         public async Task<DeleteResult> RemoveAllOrders()
@@ -59,8 +69,6 @@ namespace  tachy1.BusinessLogicLayer.Services
             return await _repository.orders.DeleteManyAsync(new BsonDocument());
         }
 
-
+       
     }
-
-
 }

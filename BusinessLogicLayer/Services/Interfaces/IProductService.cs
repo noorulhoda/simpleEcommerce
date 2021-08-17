@@ -11,10 +11,11 @@ namespace tachy1.BusinessLogicLayer.Services.Interfaces
     public interface IProductService
     {
         Task<IEnumerable<Product>> GetAllProducts();
-        Task<Product> GetProduct(string name);
+        Task<Product> GetProductByName(string name);
+        Task<Product> GetProductById(string id);
         Task AddProduct(Product model);
-        Task<bool> UpdatePrice(Product model);
-        Task<DeleteResult> RemoveProduct(string name);
+        Task<bool> UpdatePrice(string id,Product model);
+        Task<DeleteResult> RemoveProduct(string id);
         Task<DeleteResult> RemoveAllProducts();
     }
 }

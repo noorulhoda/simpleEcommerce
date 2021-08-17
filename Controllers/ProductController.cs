@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using tachy1.BusinessLogicLayer.Services;
 using tachy1.BusinessLogicLayer.Services.Interfaces;
 using tachy1.Models;
 
@@ -22,12 +23,33 @@ namespace tachy1.Controllers
         }
 
         [HttpGet]
-        [Route("api/product/getByName")]
-        public async Task<IActionResult> GetByCategory(string name)
+        [Route("api/product/getByName/{name}")]
+        public async Task<IActionResult> GetByName(string name)
         {
             try
             {
-                var product = await _productService.GetProduct(name);
+                var product = await _productService.GetProductByName(name);
+                if (product == null)
+                {
+                    return Json("No product found!");
+                }
+                return Json(product);
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.ToString());
+
+            }
+
+        }
+
+        [HttpGet]
+        [Route("api/product/getById/{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            try
+            {
+                var product = await _productService.GetProductById(id);
                 if (product == null)
                 {
                     return Json("No product found!");
@@ -44,7 +66,7 @@ namespace tachy1.Controllers
 
         [HttpPost]
         [Route("api/product")]
-        public async Task<IActionResult> Post(Product model)
+        public async Task<IActionResult> Post([FromBody]  Product model)
         {
             try
             {
@@ -66,13 +88,13 @@ namespace tachy1.Controllers
         }
 
         [HttpPut]
-        [Route("api/product/updatePrice")]
-        public async Task<IActionResult> Update(Product model)
+        [Route("api/product/updatePrice/{id}")]
+        public async Task<IActionResult> Update(string id,[FromBody] Product model)
         {
             if (string.IsNullOrWhiteSpace(model.Name))
                 return BadRequest("Product name missing");
             model.UpdatedOn = DateTime.UtcNow;
-            var result = await _productService.UpdatePrice(model);
+            var result = await _productService.UpdatePrice(id,model);
             if (result)
             {
                 return Ok("Your product's price has been updated successfully");
@@ -82,14 +104,14 @@ namespace tachy1.Controllers
         }
 
         [HttpDelete]
-        [Route("api/product")]
-        public async Task<IActionResult> Delete(string name)
+        [Route("api/product/{id}")]
+        public async Task<IActionResult> Delete(string id)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(name))
+                if (string.IsNullOrWhiteSpace(id))
                     return BadRequest("Product name missing");
-                await _productService.RemoveProduct(name);
+                await _productService.RemoveProduct(id);
                 return Ok("Your product has been deleted successfully");
             }
             catch (Exception ex)

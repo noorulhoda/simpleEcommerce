@@ -1,5 +1,6 @@
 ﻿using System;
 using AspNetCore.Identity.Mongo;
+using tachy1.Models.Interfaces;
 
 namespace tachy1.Models
 {
@@ -11,9 +12,5 @@ namespace tachy1.Models
         public string Phone { get; set; }
 
         public DateTime? Birthdate { get; set; }
-
-        public string Country { get; set; }
-
-    
     }
 }
